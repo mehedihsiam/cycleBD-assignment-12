@@ -31,6 +31,9 @@
 .color-a{
     color: #00b96c;
 }
+.color-b{
+  color: #044ed6;
+}
 
 .btn-a{
   background-image: linear-gradient(to right, #04995b,#00b96c);
