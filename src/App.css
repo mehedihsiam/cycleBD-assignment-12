@@ -29,11 +29,11 @@
 }
 
 .color-a{
-    color: #2ACB35;
+    color: #00b96c;
 }
 
 .btn-a{
-  background-image: linear-gradient(to right, #08d615,#2ACB35);
+  background-image: linear-gradient(to right, #04995b,#00b96c);
 }
 .btn-a-outline{
   color:#2ACB35;

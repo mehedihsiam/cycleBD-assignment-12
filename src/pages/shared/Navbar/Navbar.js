@@ -12,11 +12,11 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
     const navbarCustomize = {
         backgroundColor: 'transparent',
-        color: '#2ACB35'
+        color: '#00b96c'
     }
     const navMenu = {
         textDecoration: 'none',
-        color: '#2ACB35',
+        color: '#00b96c',
         margin: '0 10px'
     }
     return (

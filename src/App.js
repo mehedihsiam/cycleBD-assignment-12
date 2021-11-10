@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage/HomePage';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Login from './pages/Login/Login';
 import AllProducts from './pages/AllProducts/AllProducts';
+import NotFound from './pages/NotFound/NotFound';
 
 function App() {
   return (
@@ -27,8 +28,11 @@ function App() {
         <Route exact path="/login">
           <Login></Login>
         </Route>
+        <Route exact path="*">
+          <NotFound></NotFound>
+        </Route>
       </Switch>
-      <Footer />
+      <Footer></Footer>
     </BrowserRouter>
   );
 }

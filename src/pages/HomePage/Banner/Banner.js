@@ -30,7 +30,7 @@ const Banner = () => {
                         </Box>
                         <Box sx={{ my: 3 }}>
                             <Link to="/allProducts" style={{ textDecoration: 'none' }} >
-                                <Button style={{ color: '#2ACB35', border: '1px solid #2ACB35', fontWeight: 'bold' }}>Our Collection</Button>
+                                <Button style={{ color: '#00b96c', border: '1px solid #00b96c', fontWeight: 'bold' }}>Our Collection</Button>
                             </Link>
                         </Box>
                     </Box>
