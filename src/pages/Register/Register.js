@@ -1,25 +1,26 @@
 import { Button, Container, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react';
-import { Link, useLocation, useHistory } from 'react-router-dom';
-import { useForm } from "react-hook-form";
+import { Link, useHistory, useLocation } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 import useAuth from '../../hooks/useAuth';
 
-const Login = () => {
+const Register = () => {
     const history = useHistory();
     const location = useLocation()
     const url = location.state?.from || '/home';
-    const { emailLogin, setUser, error, setError, googleLogin } = useAuth();
+
+    const { emailRegistration, setUser, error, setError, googleLogin } = useAuth();
 
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = (userSubmition) => {
         const email = userSubmition.email;
         const password = userSubmition.password;
-        emailLogin(email, password)
+        emailRegistration(email, password)
             .then((userCredential) => {
                 // Signed in 
-                const loggedinUser = userCredential.user;
-                setUser(loggedinUser);
+                const registeredUser = userCredential.user;
+                setUser(registeredUser);
                 history.push(url);
 
             })
@@ -31,7 +32,6 @@ const Login = () => {
         reset();
     };
 
-    // google login
     const googleSignin = () => {
         googleLogin()
             .then((result) => {
@@ -48,29 +48,29 @@ const Login = () => {
         <Container>
             <Box sx={{ textAlign: 'center', my: 4 }}>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    {/* <TextField label="Name" type="text" variant="standard" {...register("name")} sx={{ width: '40%' }} />
+                    <TextField label="Name" type="text" variant="standard" {...register("name")} sx={{ width: '40%' }} />
                     <br />
-                    <br /> */}
+                    <br />
                     <TextField label="Email" type="email" variant="standard" {...register("email")} sx={{ width: '40%' }} />
                     <br />
                     <br />
                     <TextField label="Password" type="password" variant="standard" {...register("password")} sx={{ width: '40%' }} />
                     <br />
-                    <Button type="submit" className="btn-a" sx={{ color: 'white', my: 2, width: '40%' }}>Login</Button>
+                    <Button type="submit" className="btn-a" sx={{ color: 'white', my: 2, width: '40%' }}>Register</Button>
                     <br />
                     or
                     <br />
-                    <Button onClick={googleSignin} className="btn-a" sx={{ color: 'white', my: 2, width: '40%' }}>Login With Google</Button>
+                    <Button onClick={googleSignin} className="btn-a" sx={{ color: 'white', my: 2, width: '40%' }}>Register With Google</Button>
                 </form>
                 <Typography sx={{ color: 'error.main', height: '30px' }}>
                     {error.split('Firebase:')[1]}
                 </Typography>
                 <Typography>
-                    New at Cycle BD? <Link to="/register" className="color-a">Please Register</Link>
+                    Already have an account? <Link to="/login" className="color-a">Please Login</Link>
                 </Typography>
             </Box>
         </Container>
     );
 };
 
-export default Login;
+export default Register;

@@ -1,5 +1,6 @@
-import { Card, Grid, Typography } from '@mui/material';
 import React from 'react';
+import { Card, Grid, Typography } from '@mui/material';
+import Rating from 'react-rating';
 import './SingleReview.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
@@ -26,7 +27,12 @@ const SingleReview = ({ review }) => {
                 <Typography paragraph sx={{ textAlign: 'justify' }}>
                     {messege}
                 </Typography>
-                {rating}
+                <Rating
+                    initialRating={rating}
+                    readonly
+                    emptySymbol="far fa-star"
+                    fullSymbol="fas fa-star"
+                />
                 <Typography sx={{ fontSize: '.7rem', textAlign: 'left' }} color="text.secondary">
                     {date}
                 </Typography>

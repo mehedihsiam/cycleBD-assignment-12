@@ -6,10 +6,12 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import './Navbar.css'
 import { Link } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 
 
 
 const Navbar = () => {
+    const { logout, user } = useAuth();
     const navbarCustomize = {
         backgroundColor: 'transparent',
         color: '#00b96c'
@@ -27,7 +29,12 @@ const Navbar = () => {
                         <Link to="/home"><img src="/logo.png" alt="" className="logo" /></Link>
                     </Typography>
                     <Link to="/dashboard" style={navMenu}>Dashboard</Link>
-                    <Link to="/login" style={navMenu}>Login</Link>
+                    {
+                        user.email ?
+                            <Button onClick={logout}>Logout</Button>
+                            :
+                            <Link to="/login" style={navMenu}>Login</Link>
+                    }
                 </Toolbar>
             </AppBar>
         </Box>

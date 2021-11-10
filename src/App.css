@@ -37,6 +37,7 @@
 
 .btn-a{
   background-image: linear-gradient(to right, #04995b,#00b96c);
+  color: rgb(252, 233, 233);
 }
 .btn-a-outline{
   color:#2ACB35;
