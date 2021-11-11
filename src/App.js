@@ -10,6 +10,8 @@ import NotFound from './pages/NotFound/NotFound';
 import AuthProvider from './context/AuthProvider';
 import Register from './pages/Register/Register';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
+import Order from './pages/Order/Order';
+
 
 function App() {
   return (
@@ -29,6 +31,9 @@ function App() {
           <Route exact path="/allProducts">
             <AllProducts></AllProducts>
           </Route>
+          <PrivateRoute exact path="/booking/:id">
+            <Order></Order>
+          </PrivateRoute>
           <Route exact path="/login">
             <Login></Login>
           </Route>

@@ -28,6 +28,7 @@ const Navbar = () => {
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                         <Link to="/home"><img src="/logo.png" alt="" className="logo" /></Link>
                     </Typography>
+
                     <Link to="/dashboard" style={navMenu}>Dashboard</Link>
                     {
                         user.email ?

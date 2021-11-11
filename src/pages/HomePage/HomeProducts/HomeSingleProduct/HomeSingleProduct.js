@@ -10,6 +10,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Button, Grid } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 
 
@@ -26,7 +27,8 @@ const ExpandMore = styled((props) => {
 
 
 const HomeSingleProduct = ({ product }) => {
-    const { name, shortDesc, desc, date, img, price } = product;
+
+    const { name, shortDesc, desc, date, img, price, _id } = product;
     const [expanded, setExpanded] = React.useState(false);
 
     const handleExpandClick = () => {
@@ -58,7 +60,7 @@ const HomeSingleProduct = ({ product }) => {
                     </Typography>
                 </CardContent>
                 <CardActions disableSpacing>
-                    <Button variant="contained" className="btn-a">Order Now</Button>
+                    <Button variant="contained" className="btn-a"><Link to={`/booking/${_id}`} style={{ textDecoration: 'none', color: 'white' }}>Order Now</Link></Button>
                     <ExpandMore
                         expand={expanded}
                         onClick={handleExpandClick}
