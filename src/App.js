@@ -1,7 +1,5 @@
 import './App.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Navbar from './pages/shared/Navbar/Navbar';
-import Footer from './pages/shared/Footer/Footer';
 import HomePage from './pages/HomePage/HomePage';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Login from './pages/Login/Login';
@@ -17,7 +15,7 @@ function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
-        <Navbar />
+
         <Switch>
           <Route exact path="/">
             <HomePage></HomePage>
@@ -44,7 +42,6 @@ function App() {
             <NotFound></NotFound>
           </Route>
         </Switch>
-        <Footer></Footer>
       </BrowserRouter>
     </AuthProvider>
   );

@@ -73,7 +73,19 @@ const useFirebase = () => {
     const handleUserSave = (name, email) => {
         const userData = { name: name, email: email, role: role };
         axios.post("http://localhost:5000/users", userData)
-            .then(res => console.log(res.data))
+            .then()
+    }
+
+    // save user to DB when user login with Google
+    const handleUserSaveGoogle = (name, email) => {
+        const userData = { name: name, email: email, role: role };
+        fetch('http://localhost:5000/users', {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(userData)
+        })
     }
 
 
@@ -87,6 +99,7 @@ const useFirebase = () => {
         googleLogin,
         logout,
         handleUserSave,
+        handleUserSaveGoogle,
         updateDisplayName,
         status, setStatus
     };
