@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    useParams,
+    useRouteMatch
+} from "react-router-dom";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -13,14 +20,40 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
 import useAuth from '../../hooks/useAuth';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
+import Payment from './Payment/Payment';
+import DashboardHome from './DashboardHome/DashboardHome';
+import MyOrders from './MyOrders/MyOrders';
+import ReviewDashboard from './ReviewDashboard/ReviewDashboard';
+import ManageOrders from './ManageOrders/ManageOrders';
 
 
 
+
+
+
+
+const avatar = <FontAwesomeIcon icon={faUserCircle} />
 const drawerWidth = 240;
+
+
+// dashboard component
 const Dashboard = (props) => {
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
     const [loadedUser, setLoadedUser] = useState();
+    // const [client, setClient] = useState({})
+    let { path, url } = useRouteMatch();
+
+
+
+    // load the user 
+    useEffect(() => {
+        fetch(`http://localhost:5000/users?email=${user.email}`)
+            .then(res => res.json())
+            .then(data => setLoadedUser(data))
+    }, [])
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -28,19 +61,58 @@ const Dashboard = (props) => {
     const { logout, user } = useAuth();
     const drawer = (
         <div>
-            <Toolbar />
+            <Toolbar >
+                {user.photoURL ?
+                    <img src={user.photoURL} style={{ height: '40px', borderRadius: '50%', ml: 1 }} alt="" />
+                    :
+                    <Typography variant="h3" className="color-b" sx={{ fontSize: '2' }}>{avatar}</Typography>}
+                <Typography variant="h6" sx={{ ml: 2 }} className="color-b">
+                    <Link
+                        to="/home" className="color-b" style={{ textDecoration: 'none' }}
+                    >{user.displayName.split(' ')[0]}</Link>
+                </Typography>
+            </Toolbar>
             <Divider />
-            <List>
-                <ListItem button>
-                    <Link to="/payment" className="color-b" style={{ textDecoration: 'none' }}>Payment</Link>
-                </ListItem>
-                <ListItem button>
-                    <Link to="/payment" className="color-b" style={{ textDecoration: 'none' }}>My Orders</Link>
-                </ListItem>
-                <ListItem button>
-                    <Link to="/payment" className="color-b" style={{ textDecoration: 'none' }}>Reviews</Link>
-                </ListItem>
-            </List>
+            {
+                loadedUser?.role === 'User' &&
+                <List>
+                    <ListItem button>
+                        <Link to={`${url}`} className="color-b" style={{ textDecoration: 'none' }}>Dashboard</Link>
+                    </ListItem>
+                    <ListItem button>
+                        <Link to={`${url}/payment`} className="color-b" style={{ textDecoration: 'none' }}>Payment</Link>
+                    </ListItem>
+                    <ListItem button>
+                        <Link to={``} className="color-b" style={{ textDecoration: 'none' }}>My Orders</Link>
+                    </ListItem>
+                    <ListItem button>
+                        <Link to={`${url}/review`} className="color-b" style={{ textDecoration: 'none' }}>Reviews</Link>
+                    </ListItem>
+                </List>
+            }
+            {
+                loadedUser?.role === "Admin" &&
+                <List>
+                    <ListItem button>
+                        <Link to={`${url}`} className="color-b" style={{ textDecoration: 'none' }}>Dashboard</Link>
+                    </ListItem>
+                    <ListItem button>
+                        <Link to={`${url}/manageOrders`} className="color-b" style={{ textDecoration: 'none' }}>Manage Orders</Link>
+                    </ListItem>
+                    <ListItem button>
+                        <Link to={`${url}/addProduct`} className="color-b" style={{ textDecoration: 'none' }}>Add a Product</Link>
+                    </ListItem>
+                    <ListItem button>
+                        <Link to={`${url}/makeAdmin`} className="color-b" style={{ textDecoration: 'none' }}>Make Admin Someone</Link>
+                    </ListItem>
+                    <ListItem button>
+                        <Link to={`${url}/manageProducts`} className="color-b" style={{ textDecoration: 'none' }}>Manage Products</Link>
+                    </ListItem>
+                </List>
+            }
+            <ListItem button>
+                <Link to="/home" className="color-b" style={{ textDecoration: 'none' }}>Go Home</Link>
+            </ListItem>
             <Divider />
             <List>
 
@@ -53,11 +125,12 @@ const Dashboard = (props) => {
 
     const container = window !== undefined ? () => window().document.body : undefined;
 
-    useEffect(() => {
-        fetch(`http://localhost:5000/users?email=${user.email}`)
-            .then(res => res.json())
-            .then(data => setLoadedUser(data))
-    }, [])
+
+
+
+
+
+
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
@@ -79,7 +152,7 @@ const Dashboard = (props) => {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap component="div">
-                        {loadedUser.role} Dashboard
+                        {loadedUser?.role} Dashboard
                     </Typography>
                 </Toolbar>
             </AppBar>
@@ -88,7 +161,7 @@ const Dashboard = (props) => {
                 sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
                 aria-label="mailbox folders"
             >
-                {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+
                 <Drawer
                     container={container}
                     variant="temporary"
@@ -120,6 +193,21 @@ const Dashboard = (props) => {
                 sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
             >
                 <Toolbar />
+                <Switch>
+                    <Route path={path}>
+                        <DashboardHome></DashboardHome>
+                    </Route>
+                    <Route path={`${path}/payment`}>
+                        <Payment />
+                    </Route>
+                    <Route path={`${path}/review`}>
+                        <Payment />
+                    </Route>
+                </Switch>
+                <ManageOrders></ManageOrders>
+                {/* <Payment></Payment>
+                <MyOrders></MyOrders>
+                <ReviewDashboard></ReviewDashboard> */}
 
             </Box>
         </Box>

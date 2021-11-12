@@ -43,14 +43,15 @@ const Order = () => {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-
+    const date = new Date();
+    const placedDate = date.toDateString();
 
 
 
     // react hook form functions
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
-        const orderData = { ...data, status }
+        const orderData = { ...data, orderStatus: status, placedDate, img, productName: name }
         // console.log(orderData);
 
         axios.post('http://localhost:5000/order', orderData)

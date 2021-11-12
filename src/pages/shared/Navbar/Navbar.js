@@ -29,7 +29,9 @@ const Navbar = () => {
                         <Link to="/home"><img src="/logo.png" alt="" className="logo" /></Link>
                     </Typography>
 
-                    <Link to="/dashboard" style={navMenu}>Dashboard</Link>
+                    {
+                        user.email && <Link to="/dashboard" style={navMenu}>Dashboard</Link>
+                    }
                     {
                         user.email ?
                             <Button onClick={logout}>Logout</Button>
