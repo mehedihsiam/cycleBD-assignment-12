@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import {
-    BrowserRouter as Router,
+
     Switch,
     Route,
     Link,
-    useParams,
     useRouteMatch
 } from "react-router-dom";
 import AppBar from '@mui/material/AppBar';
@@ -27,6 +26,8 @@ import DashboardHome from './DashboardHome/DashboardHome';
 import MyOrders from './MyOrders/MyOrders';
 import ReviewDashboard from './ReviewDashboard/ReviewDashboard';
 import ManageOrders from './ManageOrders/ManageOrders';
+import AddProducts from './AddProducts/AddProducts';
+import MakeAdmin from './MakeAdmin/MakeAdmin';
 
 
 
@@ -83,7 +84,7 @@ const Dashboard = (props) => {
                         <Link to={`${url}/payment`} className="color-b" style={{ textDecoration: 'none' }}>Payment</Link>
                     </ListItem>
                     <ListItem button>
-                        <Link to={``} className="color-b" style={{ textDecoration: 'none' }}>My Orders</Link>
+                        <Link to={`${url}/myOrders`} className="color-b" style={{ textDecoration: 'none' }}>My Orders</Link>
                     </ListItem>
                     <ListItem button>
                         <Link to={`${url}/review`} className="color-b" style={{ textDecoration: 'none' }}>Reviews</Link>
@@ -193,21 +194,35 @@ const Dashboard = (props) => {
                 sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
             >
                 <Toolbar />
+
+
+
+
+                {/*---------- nested routing----------- */}
+
                 <Switch>
-                    <Route path={path}>
+                    <Route exact path={path}>
                         <DashboardHome></DashboardHome>
                     </Route>
                     <Route path={`${path}/payment`}>
                         <Payment />
                     </Route>
+                    <Route path={`${path}/myOrders`}>
+                        <MyOrders></MyOrders>
+                    </Route>
                     <Route path={`${path}/review`}>
-                        <Payment />
+                        <ReviewDashboard></ReviewDashboard>
+                    </Route>
+                    <Route path={`${path}/manageOrders`}>
+                        <ManageOrders></ManageOrders>
+                    </Route>
+                    <Route path={`${path}/addProduct`}>
+                        <AddProducts></AddProducts>
+                    </Route>
+                    <Route path={`${path}/makeAdmin`}>
+                        <MakeAdmin></MakeAdmin>
                     </Route>
                 </Switch>
-                <ManageOrders></ManageOrders>
-                {/* <Payment></Payment>
-                <MyOrders></MyOrders>
-                <ReviewDashboard></ReviewDashboard> */}
 
             </Box>
         </Box>

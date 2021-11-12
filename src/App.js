@@ -23,7 +23,7 @@ function App() {
           <Route exact path="/home">
             <HomePage></HomePage>
           </Route>
-          <PrivateRoute exact path="/dashboard">
+          <PrivateRoute path="/dashboard">
             <Dashboard></Dashboard>
           </PrivateRoute>
           <Route exact path="/allProducts">
@@ -38,7 +38,7 @@ function App() {
           <Route exact path="/register">
             <Register></Register>
           </Route>
-          <Route exact path="*">
+          <Route path="*">
             <NotFound></NotFound>
           </Route>
         </Switch>
