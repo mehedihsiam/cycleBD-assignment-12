@@ -42,7 +42,7 @@ const HomeSingleProduct = ({ product }) => {
         <Grid item xs={12} sm={12} md={4}>
             <Card sx={{ maxWidth: 345 }}>
                 <CardHeader
-                    title={name}
+                    title={`${name.slice(0, 15)}...`}
                     subheader={`Posted at: ${displayDate.toString()}`}
                 />
                 <CardMedia
@@ -56,7 +56,7 @@ const HomeSingleProduct = ({ product }) => {
                         {price}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                        {shortDesc}
+                        {`${shortDesc.slice(0, 100)}...`}
                     </Typography>
                 </CardContent>
                 <CardActions disableSpacing>
