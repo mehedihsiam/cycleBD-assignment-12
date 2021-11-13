@@ -120,7 +120,7 @@ const Order = () => {
                                 <br />
                                 <TextField {...register("shippingAddress")} label="Shipping Address" required variant="standard" style={{ width: '100%' }} />
                                 <br /><br />
-                                <Button type="submit">Place Order</Button>
+                                <Button type="submit" className="btn-a" sx={{ color: 'white' }}>Place Order</Button>
                             </form>
                         </Box>
                     </Fade>
