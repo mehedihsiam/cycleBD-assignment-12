@@ -12,7 +12,7 @@ const ReviewDashboard = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         const reviewData = { ...data, name: user.displayName, img: user.photoURL, date: date }
-        fetch(`http://localhost:5000/reviews?email=${user.email}`, {
+        fetch(`https://intense-harbor-12684.herokuapp.com/reviews?email=${user.email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

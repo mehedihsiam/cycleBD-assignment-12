@@ -9,7 +9,7 @@ const ManageSingleOrder = ({ order, orders, setOrders }) => {
     const status = { status: "Approved" }
 
     const approveOrder = (id) => {
-        fetch(`http://localhost:5000/order/${id}`, {
+        fetch(`https://intense-harbor-12684.herokuapp.com/order/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -28,7 +28,7 @@ const ManageSingleOrder = ({ order, orders, setOrders }) => {
     const orderReject = (id) => {
         const proceed = window.confirm('Are you sure to Reject this order?')
         if (proceed) {
-            fetch(`http://localhost:5000/order/${id}`, {
+            fetch(`https://intense-harbor-12684.herokuapp.com/order/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

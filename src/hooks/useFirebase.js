@@ -77,14 +77,14 @@ const useFirebase = () => {
     // save user to database
     const handleUserSave = (name, email) => {
         const userData = { name: name, email: email, role: role };
-        axios.post("http://localhost:5000/users", userData)
+        axios.post("https://intense-harbor-12684.herokuapp.com/users", userData)
             .then()
     }
 
     // save user to DB when user login with Google
     const handleUserSaveGoogle = (name, email) => {
         const userData = { name: name, email: email, role: role };
-        fetch('http://localhost:5000/users', {
+        fetch('https://intense-harbor-12684.herokuapp.com/users', {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

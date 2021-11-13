@@ -10,7 +10,7 @@ const MakeAdmin = () => {
     const [success, setSuccess] = useState(false);
     const onSubmit = data => {
         const email = { email: data.email };
-        fetch('http://localhost:5000/users/admin', {
+        fetch('https://intense-harbor-12684.herokuapp.com/users/admin', {
             method: 'PUT',
             headers: {
                 'authorization': `Barer ${token}`,

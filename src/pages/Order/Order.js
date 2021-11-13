@@ -35,7 +35,7 @@ const Order = () => {
     const url = location.state?.from || '/home'
 
     useEffect(() => {
-        fetch(`http://localhost:5000/order/${id}`)
+        fetch(`https://intense-harbor-12684.herokuapp.com/order/${id}`)
             .then(res => res.json())
             .then(data => setProductToOrder(data))
     }, [])
@@ -54,7 +54,7 @@ const Order = () => {
         const orderData = { ...data, orderStatus: status, placedDate, img, productName: name }
         // console.log(orderData);
 
-        axios.post('http://localhost:5000/order', orderData)
+        axios.post('https://intense-harbor-12684.herokuapp.com/order', orderData)
             .then(res => {
                 if (res.data.insertedId) {
                     alert('Your Order Has been placed')

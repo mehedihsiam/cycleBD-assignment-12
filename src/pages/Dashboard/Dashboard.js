@@ -53,7 +53,7 @@ const Dashboard = (props) => {
 
     // load the user 
     useEffect(() => {
-        fetch(`http://localhost:5000/users?email=${user.email}`)
+        fetch(`https://intense-harbor-12684.herokuapp.com/users?email=${user.email}`)
             .then(res => res.json())
             .then(data => setLoadedUser(data))
     }, [])

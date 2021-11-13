@@ -10,7 +10,7 @@ const ManageSingleProduct = ({ product, products, setProducts }) => {
     const handleProductDelete = (id) => {
         const procceed = window.confirm('Are you sure to delete this ordder?')
         if (procceed) {
-            fetch(`http://localhost:5000/products/${id}`, {
+            fetch(`https://intense-harbor-12684.herokuapp.com/products/${id}`, {
                 method: "DELETE"
             })
                 .then(res => res.json())

@@ -12,7 +12,7 @@ const Footer = () => {
 
     const [footerInfo, setFooterInfo] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/footer')
+        fetch('https://intense-harbor-12684.herokuapp.com/footer')
             .then(res => res.json())
             .then(data => setFooterInfo(data))
     }, [])

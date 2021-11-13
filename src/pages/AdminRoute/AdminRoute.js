@@ -6,7 +6,7 @@ import useAuth from '../hooks/useAuth';
 const AdminRoute = ({ children, ...rest }) => {
     const [loadedUser, setLoadedUser] = useState({});
     useEffect(() => {
-        fetch(`http://localhost:5000/users?email=${user.email}`)
+        fetch(`https://intense-harbor-12684.herokuapp.com/users?email=${user.email}`)
             .then(res => res.json())
             .then(data => setLoadedUser(data))
     }, [])

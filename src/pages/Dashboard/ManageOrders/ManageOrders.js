@@ -5,7 +5,7 @@ import ManageSingleOrder from './ManageSingleOrder/ManageSingleOrder';
 const ManageOrders = () => {
     const [orders, setOrders] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/orders/manage')
+        fetch('https://intense-harbor-12684.herokuapp.com/orders/manage')
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [orders])

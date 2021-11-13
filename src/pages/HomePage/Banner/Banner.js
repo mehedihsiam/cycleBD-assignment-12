@@ -8,7 +8,7 @@ import { Box } from '@mui/system';
 const Banner = () => {
     const [bannerInfo, setBannerInfo] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/banner')
+        fetch('https://intense-harbor-12684.herokuapp.com/banner')
             .then(res => res.json())
             .then(data => setBannerInfo(data))
     }, [])

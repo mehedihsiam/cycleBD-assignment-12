@@ -11,7 +11,7 @@ const AddProducts = () => {
         const displayDate = currentDate.toDateString();
 
         const postData = { ...data, date: displayDate }
-        axios.post('http://localhost:5000/products', postData)
+        axios.post('https://intense-harbor-12684.herokuapp.com/products', postData)
             .then(res => {
                 if (res.data.insertedId) {
                     alert('Package has been added')
