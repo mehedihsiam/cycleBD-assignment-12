@@ -12,7 +12,7 @@ const ManagaeProducts = () => {
     return (
         <div>
             <>
-                <Typography variant="h5" sx={{ textAlign: 'center' }}>Order List</Typography>
+                <Typography variant="h5" sx={{ textAlign: 'center' }}>Product List</Typography>
                 <TableContainer component={Paper}>
 
                     <Table sx={{ minWidth: 650 }} aria-label="simple table">

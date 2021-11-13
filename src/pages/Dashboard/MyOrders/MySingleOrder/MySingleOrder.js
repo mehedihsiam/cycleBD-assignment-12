@@ -32,7 +32,7 @@ const MySingleOrder = ({ order, orders, setOrders }) => {
             <TableCell component="th" scope="row">{productName.slice(0, 50)}...</TableCell>
             <TableCell align="right">{placedDate}</TableCell>
             <TableCell align="right">{orderStatus}</TableCell>
-            <TableCell align="right"><Button sx={{ color: 'white' }} className="btn-c" onClick={() => handleOderDelete(order._id)}>Delete</Button></TableCell>
+            <TableCell align="right"><Button sx={{ color: 'white' }} className="btn-c" onClick={() => handleOderDelete(order._id)}>Cancel</Button></TableCell>
         </TableRow >
 
     );

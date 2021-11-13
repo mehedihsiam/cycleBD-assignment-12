@@ -82,7 +82,7 @@ const Order = () => {
                     <Typography variant="h6" sx={{ fontWeight: 'bold', mt: 4 }}>About This Cycle</Typography>
                     <Typography paragraph>{desc}</Typography>
                     <Typography variant="h6" className="color-b">Price: {price}</Typography>
-                    <Button onClick={handleOpen}>Order</Button>
+                    <Button className="btn-b" sx={{ color: 'white' }} onClick={handleOpen}>Proceed Order</Button>
                 </Grid>
             </Grid>
 
