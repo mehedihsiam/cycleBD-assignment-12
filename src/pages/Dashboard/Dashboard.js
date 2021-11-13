@@ -28,6 +28,7 @@ import ReviewDashboard from './ReviewDashboard/ReviewDashboard';
 import ManageOrders from './ManageOrders/ManageOrders';
 import AddProducts from './AddProducts/AddProducts';
 import MakeAdmin from './MakeAdmin/MakeAdmin';
+import ManagaeProducts from './ManageProducts/ManagaeProducts';
 
 
 
@@ -43,10 +44,11 @@ const drawerWidth = 240;
 const Dashboard = (props) => {
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
-    const [loadedUser, setLoadedUser] = useState();
+    const [loadedUser, setLoadedUser] = useState({});
     // const [client, setClient] = useState({})
     let { path, url } = useRouteMatch();
 
+    const { logout, user } = useAuth();
 
 
     // load the user 
@@ -59,7 +61,6 @@ const Dashboard = (props) => {
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
-    const { logout, user } = useAuth();
     const drawer = (
         <div>
             <Toolbar >
@@ -221,6 +222,9 @@ const Dashboard = (props) => {
                     </Route>
                     <Route path={`${path}/makeAdmin`}>
                         <MakeAdmin></MakeAdmin>
+                    </Route>
+                    <Route path={`${path}/manageProducts`}>
+                        <ManagaeProducts></ManagaeProducts>
                     </Route>
                 </Switch>
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, signInWithPopup, GoogleAuthProvider, updateProfile } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, signInWithPopup, GoogleAuthProvider, updateProfile, getIdToken } from "firebase/auth";
 import initializeFirebase from '../firebase/firebase.init';
 const axios = require('axios').default;
 
@@ -14,13 +14,18 @@ const useFirebase = () => {
     const [error, setError] = useState('');
     const [status, setStatus] = useState('Pending');
     const [role, setRole] = useState('User');
+    const [token, setToken] = useState('')
 
 
     // observer
     useEffect(() => {
         const unsubscribed = onAuthStateChanged(auth, (user) => {
             if (user) {
-                setUser(user)
+                setUser(user);
+                getIdToken(user)
+                    .then(idToken => {
+                        setToken(idToken)
+                    })
             }
             else {
                 setUser({})
@@ -95,6 +100,7 @@ const useFirebase = () => {
         error, setError,
         isLoading, setIsLoading,
         emailRegistration,
+        token,
         emailLogin,
         googleLogin,
         logout,

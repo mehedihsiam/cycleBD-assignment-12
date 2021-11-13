@@ -1,22 +1,31 @@
-import { Button, TextField } from '@mui/material';
+import { Alert, Button, TextField } from '@mui/material';
 import { Box } from '@mui/system';
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import useAuth from '../../../hooks/useAuth';
 
 const MakeAdmin = () => {
-    const { register, handleSubmit } = useForm();
+    const { token } = useAuth();
+    const { register, handleSubmit, reset } = useForm();
+    const [success, setSuccess] = useState(false);
     const onSubmit = data => {
         const email = { email: data.email };
-        console.log(email)
         fetch('http://localhost:5000/users/admin', {
             method: 'PUT',
             headers: {
+                'authorization': `Barer ${token}`,
                 'content-type': 'application/json'
             },
             body: JSON.stringify(email)
         })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                if (data.modifiedCount) {
+                    setSuccess(true);
+
+                }
+            })
+        reset();
     };
 
     return (
@@ -33,6 +42,8 @@ const MakeAdmin = () => {
                     />
                     <Button className="btn-b" sx={{ color: 'white', mx: 2 }} type="submit">Add</Button>
                 </form>
+                <br />
+                {success && <Alert severity="success">Added theuser as an admin</Alert>}
             </Box>
 
         </div>

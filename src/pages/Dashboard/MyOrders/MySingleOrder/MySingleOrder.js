@@ -2,7 +2,7 @@ import { Button, TableCell, TableRow } from '@mui/material';
 import React from 'react';
 
 const MySingleOrder = ({ order, orders, setOrders }) => {
-    const { img, productName, placedDate, status } = order;
+    const { img, productName, placedDate, orderStatus } = order;
 
 
 
@@ -29,10 +29,10 @@ const MySingleOrder = ({ order, orders, setOrders }) => {
             <TableCell align="left">
                 <img src={img} alt="" style={{ height: '30px' }} />
             </TableCell>
-            <TableCell component="th" scope="row">{productName}</TableCell>
+            <TableCell component="th" scope="row">{productName.slice(0, 50)}...</TableCell>
             <TableCell align="right">{placedDate}</TableCell>
-            <TableCell align="right">{status}</TableCell>
-            <TableCell align="right"><Button onClick={() => handleOderDelete(order._id)}>Delete</Button></TableCell>
+            <TableCell align="right">{orderStatus}</TableCell>
+            <TableCell align="right"><Button sx={{ color: 'white' }} className="btn-c" onClick={() => handleOderDelete(order._id)}>Delete</Button></TableCell>
         </TableRow >
 
     );

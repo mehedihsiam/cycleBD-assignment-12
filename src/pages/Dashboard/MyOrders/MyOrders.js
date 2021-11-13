@@ -25,11 +25,11 @@ const MyOrders = () => {
                             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                                 <TableHead>
                                     <TableRow>
-                                        <TableCell align="left">Product</TableCell>
-                                        <TableCell>Name</TableCell>
-                                        <TableCell align="right">Placed Date</TableCell>
-                                        <TableCell align="right">Status</TableCell>
-                                        <TableCell align="right">Action</TableCell>
+                                        <TableCell align="left" sx={{ fontWeight: 'bold' }}>Product</TableCell>
+                                        <TableCell sx={{ fontWeight: 'bold' }}>Name</TableCell>
+                                        <TableCell align="right" sx={{ fontWeight: 'bold' }}>Placed Date</TableCell>
+                                        <TableCell align="right" sx={{ fontWeight: 'bold' }}>Status</TableCell>
+                                        <TableCell align="right" sx={{ fontWeight: 'bold' }}>Action</TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>

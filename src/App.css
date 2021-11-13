@@ -32,7 +32,7 @@
     color: #00b96c;
 }
 .color-b{
-  color: #044ed6;
+  color: #1976D2;
 }
 
 .btn-a{
@@ -40,7 +40,11 @@
   color: rgb(252, 233, 233);
 }
 .btn-b{
-  background-image: linear-gradient(to right, #044ed6,#2866da);
+  background-image: linear-gradient(to right, #0163c5,#1976D2);
+  color: rgb(255, 255, 255);
+}
+.btn-c{
+  background-image: linear-gradient(to right, #c20404,#e90707);
   color: rgb(255, 255, 255);
 }
 .btn-a-outline{
