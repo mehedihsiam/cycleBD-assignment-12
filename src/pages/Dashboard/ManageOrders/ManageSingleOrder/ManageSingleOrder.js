@@ -57,8 +57,8 @@ const ManageSingleOrder = ({ order, orders, setOrders }) => {
             <TableCell component="th" scope="row">{orderStatus}</TableCell>
             <TableCell component="th" scope="row">
                 <Box>
-                    <Button onClick={() => approveOrder(order._id)}>Appove</Button>
-                    <Button onClick={() => orderReject(order._id)}>Reject</Button>
+                    <Button className="btn-a" sx={{ color: 'white', m: 1 }} onClick={() => approveOrder(order._id)}>Appove</Button>
+                    <Button className="btn-c" sx={{ color: 'white', m: 1 }} onClick={() => orderReject(order._id)}>Reject</Button>
                 </Box>
             </TableCell>
 

@@ -3,7 +3,12 @@ import { Button, Container, Grid, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import './Banner.css'
 import { Box } from '@mui/system';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
+
+
+AOS.init();
 
 const Banner = () => {
     const [bannerInfo, setBannerInfo] = useState([]);
@@ -18,7 +23,7 @@ const Banner = () => {
     return (
         <Container>
             <Grid container sx={{ my: 4 }}>
-                <Grid item xs={12} sm={12} md={6}>
+                <Grid item xs={12} sm={12} md={6} data-aos="zoom-in">
                     <Box sx={{ mt: 5 }}>
                         <Typography variant='h3' className="color-a" sx={{ fontWeight: 500 }}>
                             {banner?.headline}

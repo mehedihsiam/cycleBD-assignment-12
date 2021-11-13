@@ -11,7 +11,12 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Button, Grid } from '@mui/material';
 import { Link } from 'react-router-dom';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
+
+
+AOS.init();
 
 
 const ExpandMore = styled((props) => {
@@ -39,7 +44,7 @@ const HomeSingleProduct = ({ product }) => {
     const displayDate = splitedDate[1] + " " + splitedDate[2] + ", " + splitedDate[3];
 
     return (
-        <Grid item xs={12} sm={12} md={4}>
+        <Grid item xs={12} sm={12} md={4} data-aos="flip-left">
             <Card sx={{ maxWidth: 345 }}>
                 <CardHeader
                     title={`${name.slice(0, 15)}...`}
